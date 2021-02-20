@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Create product</h1>
+<p>
+    <a href="/home">Product list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-product}"
+      th:object="${product}"
+      enctype="multipart/form-data"
+      method="post">
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td><input type="text" th:field="*{id}"/></td>
+                        <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Desv:</td>
+            <td><input type="text" th:field="*{desv}"/></td>
+<!--                        <td th:if="${#fields.hasErrors('desv')}" th:errors="*{desv}">Name Error</td>-->
+        </tr>
+
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" th:field="*{price}"/></td>
+                        <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Name Error</td>
+        </tr>
+
+        <tr>
+            <td>Category:</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Size:</td>
+            <td>
+                <select th:field="*{size}">
+                    <option th:each="s : ${sizes}" th:value="${s.id}" th:text="${s.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Img:</td>
+            <td><input type="file" th:field="*{img}"/></td>
+            <!--            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>-->
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create product"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

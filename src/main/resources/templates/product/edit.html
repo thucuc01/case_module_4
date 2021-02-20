@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Edit product</h1>
+<p>
+    <a href="/home">Product list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/save-product}" th:object="${product}" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <!--            <td>ID:</td>-->
+            <td><input name="id" type="hidden" th:field="*{id}"/></td>
+            <!--            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</td>-->
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Desv:</td>
+            <td><input type="text" th:field="*{desv}"/></td>
+            <!--            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>-->
+        </tr>
+
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" th:field="*{price}"/></td>
+            <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Name Error</td>
+        </tr>
+
+        <tr>
+            <td>Category:</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Size:</td>
+            <td>
+                <select th:field="*{size}">
+                    <option th:each="s : ${sizes}"
+                            th:value="${s.id}"
+                            th:text="${s.name}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Img:</td>
+
+            <td>
+                <img th:src="${'http://localhost:8080/'+ product.img}" width="400" height="200">
+                <input th:value="${product.img}" type="file" th:field="*{img}"/></td>
+            <!--            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>-->
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value=" Save "></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

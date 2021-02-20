@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>Name Product</th>
+        <th>Quantity</th>
+        <th>IMG</th>
+        <th>Don gia/san pham</th>
+        <th>Tong tien</th>
+        <th>Delete</th>
+        <th>Accept</th>
+
+    </tr>
+    <th:block th:each="mp : ${list}">
+        <tr>
+
+            <td th:text="${mp.getProduct_name()}"></td>
+            <td th:text="${mp.getQuantity()}"></td>
+            <td>
+                <img th:src="${'http://localhost:8080/'+mp.getProduct_img()}"  width="400" height="200">
+            </td>
+            <td th:text="${mp.getProduct_price()}"></td>
+            <td th:text="${mp.getMoney()}"></td>
+            <td>
+                <form method="post" th:action="@{/web/delete}">
+                    <input name="id" type="hidden" th:value="${mp.getOder_id()}"/>
+                    <input name="id2" type="hidden" th:value="${id2}"/>
+                    <input type="submit" value="Delete">
+                </form>
+<!--                <a th:href="@{/web/delete/__${mp.getOder_id()}__ }">Delete</a>-->
+            </td>
+            <td>
+                <form method="post" th:action="@{/web/accept}">
+                    <input name="id" type="hidden" th:value="${mp.getOder_id()}"/>
+                    <input name="id2" type="hidden" th:value="${id2}"/>
+                    <input  type="submit" value="Accept">
+                </form>
+<!--                <a th:href="@{/web/edit_order/__${mp.getOder_id()}__ }">Accept</a>-->
+            </td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

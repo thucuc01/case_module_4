@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Edit product</h1>
+
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+
+<form th:action="@{/web/create-order}" th:object="${product}" method="post">
+
+    <table>
+        <tr>
+            <td>Customer ID Test:</td>
+            <td><input type="text" name="customerId"></td>
+        </tr>
+        <tr>
+            <!--            <td>ID:</td>-->
+            <td><input name="id" type="hidden" th:field="*{id}"/></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Desv:</td>
+            <td><input type="text" th:field="*{desv}"/></td>
+        </tr>
+
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" th:field="*{price}"/></td>
+        </tr>
+
+        <tr>
+            <td>Category:</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Size:</td>
+            <td>
+                <select th:field="*{size}">
+                    <option th:each="s : ${sizes}"
+                            th:value="${s.id}"
+                            th:text="${s.name}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Img:</td>
+
+            <td>
+                <img th:src="${'http://localhost:8080/'+ product.img}" width="400" height="200">
+            <input type="hidden" name="imga" th:value="*{img}">
+        </tr>
+        <tr>
+            <td>Quantity : </td>
+
+            <td><input type="text" name="quantity"> </td>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value=" Them vao gio hang "></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
