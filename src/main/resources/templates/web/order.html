@@ -5,6 +5,10 @@
   <title>Title</title>
 </head>
 <body>
+
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <table border="1">
     <tr>
         <th>Name Product</th>

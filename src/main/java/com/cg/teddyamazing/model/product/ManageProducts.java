@@ -1,8 +1,11 @@
 package com.cg.teddyamazing.model.product;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import java.sql.Date;
 
 @Entity
@@ -13,8 +16,13 @@ public class ManageProducts {
     @Column(name = "created_at")
     @CreationTimestamp
     private Date date_Added;
+//    @Pattern(regexp = "^(19|20)\\d\\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$  ",message = "yyyy-mm-dd")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd"")
     private Date nsx;
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @Pattern(regexp = "^(20)\\d\\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$ ",message = "yyyy-mm-dd")
     private Date hsd;
+    @Min(value = 10,message = "Nhap 10 san pham tro len")
     private int quantity;
     @ManyToOne
     @JoinColumn(name="product_id")

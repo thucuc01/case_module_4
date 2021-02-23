@@ -15,9 +15,15 @@ import java.util.Optional;
 public interface ManagerProductRepo extends PagingAndSortingRepository<ManageProducts, String> {
     List<ManageProducts> findByProduct_Id(String id);
 
+    List<ManageProducts> findAllByProduct_Category_Id(String id);
+
+    List<ManageProducts> findAllByProduct_Size_Id(String id);
+
     Optional<ManageProducts> findById(String id);
 
     Iterable<ManageProducts> findAllByProduct(Product product);
+
+
 
     @Query(nativeQuery = true,value ="select * from manage_products where product_id=:id order by hsd;")
     List<ManageProducts> findAllByProductSort(String id);

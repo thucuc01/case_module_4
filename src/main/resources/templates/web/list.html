@@ -6,32 +6,33 @@
     <title>Trang chu ok</title>
 </head>
 <body>
+<header th:replace="/layout :: header"></header>
 
 <div class="container">
-    <h1>List Product Web</h1>
 
-    <br>
-    <h2>Gio hang</h2>
-    <form method="post" th:action="@{/web/oder}">
-        Customer ID:
-        <input type="text" name="id">
-        <input type="submit" value="Xem gio hang">
-    </form>
-   <div class="row">
-       <div class="col-md-8">
-           <form>
-               Search by Name:
-               <input name="s" type="text"/>
-               <input type="submit" th:value="Search"/>
-           </form>
-       </div>
-       <div class="col-md-4">
-           <form >
-               Sort All Product by Price :
-               <input type="submit" name="s1" th:value="Sort">
-           </form>
-       </div>
-   </div>
+
+<!--    <br>-->
+<!--    <h6>Gio hang</h6>-->
+<!--    <form method="post" th:action="@{/web/oder}">-->
+<!--        Customer ID:-->
+<!--        <input type="text" name="id">-->
+<!--        <input type="submit" value="Xem gio hang">-->
+<!--    </form>-->
+<!--   <div class="row">-->
+<!--       <div class="col-md-8">-->
+<!--&lt;!&ndash;           <form>&ndash;&gt;-->
+<!--&lt;!&ndash;               Search by Name:&ndash;&gt;-->
+<!--&lt;!&ndash;               <input name="s" type="text"/>&ndash;&gt;-->
+<!--&lt;!&ndash;               <input type="submit" th:value="Search"/>&ndash;&gt;-->
+<!--&lt;!&ndash;           </form>&ndash;&gt;-->
+<!--       </div>-->
+<!--       <div class="col-md-4">-->
+<!--           <form >-->
+<!--               Sort All Product by Price :-->
+<!--               <input type="submit" name="s1" th:value="Sort">-->
+<!--           </form>-->
+<!--       </div>-->
+<!--   </div>-->
     <br>
     <div class="row">
         <th:block th:each="mp : ${manageproducts}">
@@ -59,48 +60,7 @@
 
 </div>
 
-
-
-
-
-
-<!--<hr>-->
-<!--<a href="/quanly/create_manager">Nhap kho</a>-->
-<!--<form>-->
-<!--    Search by Name:-->
-<!--    <input name="s" type="text"/>-->
-<!--    <input type="submit" th:value="Search"/>-->
-<!--</form><br/>-->
-<!--<form >-->
-<!--    Sort All Product by Price :-->
-<!--    <input type="submit" name="s1" th:value="Sort">-->
-<!--</form>-->
-<!--<br>-->
-
-<!--<table border="1">-->
-<!--    <tr>-->
-<!--        <th>ID</th>-->
-<!--        <th>Product-Name</th>-->
-<!--        <th>Quantity</th>-->
-<!--        <th>Desv</th>-->
-<!--        <th>Img</th>-->
-<!--        <th>Price</th>-->
-<!--        <th>Info Product</th>-->
-
-<!--    </tr>-->
-<!--    <th:block th:each="mp : ${manageproducts}">-->
-<!--        <tr>-->
-<!--            <td th:text="${mp.getProduct_id()}"></td>-->
-<!--            <td th:text="${mp.getP_name()}"></td>-->
-<!--            <td th:text="${mp.getQuantity()}"></td>-->
-<!--            <td th:text="${mp.getP_desv()}"></td>-->
-
-<!--            <td ><img th:src="${'http://localhost:8080/'+mp.getP_img()}" width="400" height="200"></td>-->
-<!--            <td th:text="${mp.getP_price()}"></td>-->
-<!--            <td><a th:href="@{/web/info/__${mp.getProduct_id()}__ }">Info</a></td>-->
-<!--        </tr>-->
-<!--    </th:block>-->
-<!--</table>-->
+<footer th:replace="/layout :: footer"></footer>
 
 </body>
 </html>

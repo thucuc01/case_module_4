@@ -2,10 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>Title</title>
 </head>
 <body>
-<h1>Edit product</h1>
+<header th:replace="/layout :: header"></header>
 
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
@@ -13,66 +15,104 @@
 
 <form th:action="@{/web/create-order}" th:object="${product}" method="post">
 
-    <table>
-        <tr>
-            <td>Customer ID Test:</td>
-            <td><input type="text" name="customerId"></td>
-        </tr>
-        <tr>
-            <!--            <td>ID:</td>-->
-            <td><input name="id" type="hidden" th:field="*{id}"/></td>
-        </tr>
-        <tr>
-            <td>Name:</td>
-            <td><input type="text" th:field="*{name}"/></td>
-        </tr>
-        <tr>
-            <td>Desv:</td>
-            <td><input type="text" th:field="*{desv}"/></td>
-        </tr>
-
-        <tr>
-            <td>Price:</td>
-            <td><input type="text" th:field="*{price}"/></td>
-        </tr>
-
-        <tr>
-            <td>Category:</td>
-            <td>
-                <select th:field="*{category}">
-                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Size:</td>
-            <td>
-                <select th:field="*{size}">
-                    <option th:each="s : ${sizes}"
-                            th:value="${s.id}"
-                            th:text="${s.name}"></option>
-                </select>
-            </td>
-        </tr>
-
-        <tr>
-            <td>Img:</td>
-
-            <td>
+    <div class="container">
+        <div class="row">
+            <div class="col">
                 <img th:src="${'http://localhost:8080/'+ product.img}" width="400" height="200">
-            <input type="hidden" name="imga" th:value="*{img}">
-        </tr>
-        <tr>
-            <td>Quantity : </td>
+                <input type="hidden" name="imga" th:value="*{img}">
+                <td><input name="id" type="hidden" th:field="*{id}"/></td>
+            </div>
+            <div class="col">
+                <div class="card-body">
+                                    <span>Customer ID Test:</span>
+                                    <input type="text" name="customerId">
 
-            <td><input type="text" name="quantity"> </td>
+                    <h4 class="card-title" th:text="${product.name}"></h4>
+                    <input type="hidden" th:field="*{name}"/>
+                    <input type="hidden" th:field="*{desv}"/>
+                    <input type="hidden" th:field="*{price}"/>
+                    <input type="hidden" th:field="*{size}"/>
+                    <input type="hidden" th:field="*{category}"/>
+                    <hr>
+                    MO TA :<p class="card-text" th:text="${product.desv}"></p>
+                    Size : <span th:text="${product.size.getName()}"></span>
+                    <br>
+                    Price: <span th:text="${product.price}"></span>
+                    <hr>
+                    So luong : <input type="text" name="quantity">
+                    <br>
+                    <input type="submit" value=" Them vao gio hang ">
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <tr>
-            <td></td>
-            <td><input type="submit" value=" Them vao gio hang "></td>
-        </tr>
-    </table>
+
+
+
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <td>Customer ID Test:</td>-->
+<!--            <td><input type="text" name="customerId"></td>-->
+<!--        </tr>-->
+<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;            <td>ID:</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td><input name="id" type="hidden" th:field="*{id}"/></td>&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--        <tr>-->
+<!--            <td>Name:</td>-->
+<!--            <td><input type="text" th:field="*{name}"/></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>Desv:</td>-->
+<!--            <td><input type="text" th:field="*{desv}"/></td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--            <td>Price:</td>-->
+<!--            <td><input type="text" th:field="*{price}"/></td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--            <td>Category:</td>-->
+<!--            <td>-->
+<!--                <select th:field="*{category}">-->
+<!--                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>-->
+<!--                </select>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>Size:</td>-->
+<!--            <td>-->
+<!--                <select th:field="*{size}">-->
+<!--                    <option th:each="s : ${sizes}"-->
+<!--                            th:value="${s.id}"-->
+<!--                            th:text="${s.name}"></option>-->
+<!--                </select>-->
+<!--            </td>-->
+<!--        </tr>-->
+
+<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>Img:</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <img th:src="${'http://localhost:8080/'+ product.img}" width="400" height="200">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="hidden" name="imga" th:value="*{img}">&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--        <tr>-->
+<!--            <td>Quantity : </td>-->
+
+<!--            <td><input type="text" name="quantity"> </td>-->
+
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--            <td><input type="submit" value=" Them vao gio hang "></td>-->
+<!--        </tr>-->
+<!--    </table>-->
 </form>
+
+<footer th:replace="/layout :: footer"></footer>
+
 
 </body>
 </html>

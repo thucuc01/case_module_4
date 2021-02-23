@@ -4,6 +4,7 @@ import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
@@ -17,8 +18,10 @@ public class Customer {
     private String lastName;
     @NotEmpty(message = "pease input your address")
     private String address;
+
+    @Column(unique = true)
     @NotEmpty(message = "pease input your phone number")
-    @NumberFormat
+    @Pattern(regexp = "^[0][0-9]{9}$",message = "sdt star 0, 0-9, size=10")
     private String phoneNumber;
     @OneToOne
     @JoinColumn

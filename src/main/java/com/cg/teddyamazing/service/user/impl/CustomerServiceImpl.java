@@ -12,7 +12,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     public CustomerRepo customerRepo;
 
-
     @Override
     public Page<Customer> findAll(Pageable pageable) {
         return customerRepo.findAll(pageable);

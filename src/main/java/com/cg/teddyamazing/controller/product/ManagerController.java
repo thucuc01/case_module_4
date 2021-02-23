@@ -9,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import javax.validation.Valid;
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -33,16 +36,22 @@ public class ManagerController {
     @GetMapping("/create_manager")
     public ModelAndView showCreateForm(){
         ModelAndView modelAndView = new ModelAndView("manager_product/create");
-        modelAndView.addObject("managerProduct", new ManageProducts());
+        modelAndView.addObject("manageProduct", new ManageProducts());
         return modelAndView;
     }
     @PostMapping("/create-Mproduct")
-    public ModelAndView createManagerProduct(@ModelAttribute ("managerProduct") ManageProducts manageProduct){
-        managerProductService.save(manageProduct);
+    public ModelAndView createManagerProduct(@Valid @ModelAttribute ("manageProduct") ManageProducts manageProduct, BindingResult bindingResult){
+        ModelAndView modelAndView;
 
-        ModelAndView modelAndView = new ModelAndView("manager_product/create");
-        modelAndView.addObject("managerProduct", new ManageProducts());
-        modelAndView.addObject("message", "Product updated successfully");
+            if(bindingResult.hasFieldErrors()){
+                modelAndView=new ModelAndView("manager_product/create");
+                return modelAndView;
+            }
+            managerProductService.save(manageProduct);
+
+            modelAndView = new ModelAndView("manager_product/create");
+            modelAndView.addObject("managerProduct", new ManageProducts());
+            modelAndView.addObject("message", "Product updated successfully");
 
         return modelAndView;
     }
@@ -50,9 +59,9 @@ public class ManagerController {
     @GetMapping("/show")
     public ModelAndView showHome(
             @RequestParam("s") Optional<String> s,
-                                 @RequestParam("s1") Optional<String> s1,
-                                 @RequestParam("page") Optional<Integer> page,
-                                 Pageable pageable){
+            @RequestParam("s1") Optional<String> s1,
+            @RequestParam("page") Optional<Integer> page,
+            Pageable pageable){
         Page<ManageProducts> manageProducts;
 
         int pageNum = 0;

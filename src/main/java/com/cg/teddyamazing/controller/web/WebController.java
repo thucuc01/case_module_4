@@ -149,10 +149,8 @@ public class WebController {
     }
 
     @PostMapping("/oder")
-    public ModelAndView showOder(@RequestParam("id") Optional<Long> id){
+    public ModelAndView showOder(@RequestParam("customerId") Optional<Long> id){
         ModelAndView modelAndView;
-
-
         if(id.isPresent()){
             List<OderWeb> list=oderService.findByCustomer_IdAndStatus(id.get());
             Long id2=id.get();
@@ -177,6 +175,8 @@ public class WebController {
         Long id2=id1;
         List<OderWeb> list=oderService.findByCustomer_IdAndStatus(id1);
         modelAndView=new ModelAndView("web/order","list",list);
+        modelAndView.addObject("message", "Xoa khoi gio hang thanh cong");
+
         modelAndView.addObject("id2",id2);
         return modelAndView;
     }
@@ -225,6 +225,7 @@ public class WebController {
             quantity=quantity-manageProducts.getQuantity();
             manageProducts.setQuantity(0);
         }
+        modelAndView.addObject("message", "Tao don hang thanh cong");
         return modelAndView;
     }
 
