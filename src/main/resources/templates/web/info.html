@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: head" >
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -15,7 +15,7 @@
 
 <div class="container">
 
-<form th:action="@{/web/create-order}" th:object="${product}" method="post">
+<form th:action="@{/user/create-order}" th:object="${product}" method="post">
 
         <div class="row">
             <div class="col-md-7">
@@ -25,8 +25,10 @@
             </div>
             <div class="col-md-5">
                 <div class="card-body">
-                                    <span>Customer ID Test:</span>
-                                    <input type="text" name="customerId">
+<!--                                    <span>Customer ID Test:</span>-->
+                    <th:block th:if="${!session.isEmpty()}">
+                        <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
+                    </th:block>
 
                     <h4 class="card-title" th:text="${product.name}"></h4>
                     <input type="hidden" th:field="*{name}"/>
@@ -41,8 +43,8 @@
                     Price: <span th:text="${product.price}"></span>
                     <hr>
                     So luong : <input type="text" name="quantity">
-                    <br>
-                    <input type="submit" value=" Them vao gio hang ">
+                    <hr>
+                    <input type="submit"class="btn btn-danger" value=" Them vao gio hang ">
                 </div>
             </div>
         </div>
@@ -52,7 +54,7 @@
     <hr>
     <div class="row">
         <div class="col-md-3" th:each="p:${productWebs}">
-            <a th:href="@{/web/info/__${p.getProduct_id()}__}"></a>
+            <a th:href="@{/user/info/__${p.getProduct_id()}__}"></a>
             <div class="card">
                 <img th:src="${'http://localhost:8080/'+p.getP_img()}" class="card-img-top" alt="Loading.....">
                 <div class="card-body">

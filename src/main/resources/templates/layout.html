@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,50 +13,51 @@
 
 </head>
 <body>
-<header th:fragment="header">
-
-    <th:block th:if="${session.containsKey('id')}">
-        <input type="text" th:text="${customer.id}">
-    </th:block>
+<header th:fragment="header" style="background: beige">
 
     <div class="container">
-        <h3 style="font-max-size: medium" th:bgcolor="pink">Teddy Shop</h3>
         <div>
-
-            <form method="post" th:action="@{/web/oder}" >
-                <input type="text" name="customerId" th:value="${customerId}">
-                <button class="btn btn-success" type="submit">Gio hang</button>
+            <form method="post" th:action="@{/web/oder}" style="text-align: right">
+                <th:block th:if="${!session.isEmpty()}">
+                    <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
+                </th:block>
+                <button class="btn btn-light" type="submit"><i class="fas fa-shopping-cart fa-3x" style="color: red" ></i></button>
             </form>
-        </div>
-    </div>
+            <a href="#login"><i class="fas fa-user fa-2x">  Log in</i></a>
 
+        </div>
+
+    </div>
 
     <nav class="navbar navbar-light" style="background-color: lightpink">
         <div class="container">
             <div>
-                <a class="navbar-brand" th:href="@{/web}">Home</a>
-<!--                <a class="navbar-brand">Category</a>-->
-                <a class="navbar-brand" th:each="c:${categories}"th:value="${c.id}" th:text="${c.name}" th:href="@{/web/list/__${c.id}__}"></a>
-<!--                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">-->
-<!--                    <option selected>Category</option>-->
-<!--                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>-->
-<!--                </select>-->
-<!--                <a class="navbar-brand">Size</a>-->
+                <a class="navbar-brand" th:href="@{/user}">Home</a>
+                <!--                <a class="navbar-brand">Category</a>-->
+                <a class="navbar-brand" th:each="c:${categories}"th:value="${c.id}" th:text="${c.name}" th:href="@{/user/list/__${c.id}__}"></a>
+                <!--                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">-->
+                <!--                    <option selected>Category</option>-->
+                <!--                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>-->
+                <!--                </select>-->
+                <!--                <a class="navbar-brand">Size</a>-->
+
             </div>
             <div>
-                <form class="d-flex" th:action="@{/web}" method="get">
-                    <input class="form-control me-2" type="text" name="s" placeholder="SearchByName" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form style="text-align: right">
+                    <button class="btn btn-success" type="submit" name="s1">Sort-By-Price</button>
+                </form>
+            </div>
+            <div>
+                <form class="d-flex" th:action="@{/user}" method="get">
+                    <input class="form-control" type="text" name="s" placeholder="Search-By-Name......" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search fa-1x"></i></button>
                 </form>
             </div>
 
+
         </div>
     </nav>
-    <div class="container">
-        <form style="text-align: right">
-            <button class="btn btn-success" type="submit" name="s1">SortByPrice</button>
-        </form>
-    </div>
+
 
 </header>
 

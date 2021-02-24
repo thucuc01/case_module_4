@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Trang chu ok</title>
+<head th:replace="/layout :: head" >
+<!--    <meta charset="UTF-8">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<!--    <title>Trang chu ok</title>-->
 </head>
 <body>
 <header th:replace="/layout :: header"></header>
-
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <div class="container">
 
     <br>
@@ -15,9 +17,9 @@
         <th:block th:each="mp : ${manageproducts}">
             <hr>
             <div class="col-md-4">
-                <a th:href="@{/web/info/__${mp.getProduct_id()}__}">
+                <a th:href="@{/user/info/__${mp.getProduct_id()}__}">
                 <div class="card">
-                    <img th:src="${'http://localhost:8080/'+mp.getP_img()}" class="card-img-top" alt="Loading.....">
+                    <img th:src="${'http://localhost:8080/'+mp.getP_img()}" class="img-thumbnail" alt="Loading.....">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${mp.getP_name()}"></h5>
                     </div>

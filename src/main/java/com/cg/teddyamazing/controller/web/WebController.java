@@ -12,11 +12,7 @@ import com.cg.teddyamazing.service.product.ManagerProductService;
 import com.cg.teddyamazing.service.product.ProductService;
 import com.cg.teddyamazing.service.product.SizeService;
 import com.cg.teddyamazing.service.user.CustomerService;
-import org.hibernate.usertype.CompositeUserType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,18 +22,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@SessionAttributes("customer")
-@RequestMapping("/web")
+@RequestMapping("/user")
 public class WebController {
     @Autowired
     public ManagerProductService managerProductService;
     @Autowired
     public ProductService productService;
 
-    @ModelAttribute("customer")
-    public Customer setSession(){
-        return new Customer();
-    }
 
     @Autowired
     public CustomerService customerService;
@@ -166,7 +157,7 @@ public class WebController {
             modelAndView.addObject("id2",id2);
             return modelAndView;
         }
-        modelAndView=new ModelAndView("customer/create","customer",new Customer());
+        modelAndView=new ModelAndView("web/list","message","ban chua co gio hang");
         return modelAndView;
     }
     @PostMapping("/delete")
@@ -247,6 +238,20 @@ public class WebController {
         manageProducts= managerProductService.findAllByProduct_Category_Id(id);
         modelAndView=new ModelAndView("web/list");
         modelAndView.addObject("manageproducts",manageProducts);
+        return modelAndView;
+    }
+
+    @PostMapping("/oderAccept")
+    public ModelAndView getListOderAccept(@RequestParam("customerId") Optional<Long> id){
+        ModelAndView modelAndView;
+        if(id.isPresent()){
+            List<OderWeb> list=oderService.findByCustomer_IdAndStatusAccept(id.get());
+            Long id2=id.get();
+            modelAndView=new ModelAndView("web/order","list",list);
+            modelAndView.addObject("id2",id2);
+            return modelAndView;
+        }
+        modelAndView=new ModelAndView("web/list","message","chua co thong tin");
         return modelAndView;
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public interface CustomerService {
     Page<Customer> findAll(Pageable pageable);
 
-
+    Customer findByPhoneNumber(String phone);
 
     Customer findById(Long id);
 

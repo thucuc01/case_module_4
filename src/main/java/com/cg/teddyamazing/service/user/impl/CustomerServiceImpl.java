@@ -18,6 +18,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer findByPhoneNumber(String phone) {
+        return customerRepo.findByPhoneNumber(phone);
+    }
+
+    @Override
     public Customer findById(Long id) {
         return customerRepo.findById(id).get();
     }
@@ -41,4 +46,5 @@ public class CustomerServiceImpl implements CustomerService {
     public Page<Customer> findAllByFirstNameContaining(String firstName, Pageable pageable) {
         return customerRepo.findAllByFirstNameContaining(firstName,pageable);
     }
+
 }

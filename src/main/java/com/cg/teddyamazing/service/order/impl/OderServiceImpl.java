@@ -37,4 +37,9 @@ public class OderServiceImpl implements OderService {
     public List<OderWeb> findByCustomer_IdAndStatus(Long id) {
         return oderRepo.findByCustomer_IdAndStatus(id);
     }
+
+    @Override
+    public List<OderWeb> findByCustomer_IdAndStatusAccept(Long id) {
+        return oderRepo.findByCustomer_IdAndStatusAccept(id);
+    }
 }

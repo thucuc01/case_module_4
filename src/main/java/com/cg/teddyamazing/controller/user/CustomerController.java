@@ -141,6 +141,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -195,7 +196,7 @@ public class CustomerController {
     }
 
     @PostMapping("/create-customer")
-    public ModelAndView saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Pageable pageable){
+    public ModelAndView saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, HttpSession httpSession){
         ModelAndView modelAndView;
 
         if (bindingResult.hasFieldErrors()){
@@ -204,9 +205,12 @@ public class CustomerController {
         }
 
         customerService.save(customer);
+        Customer customer1=customerService.findByPhoneNumber(customer.getPhoneNumber());
+        httpSession.setAttribute("customer",customer1);
         modelAndView = new ModelAndView("customer/create");
         modelAndView.addObject("customer",new Customer());
         modelAndView.addObject("message", "da them khach hang thanh cong");
+
         return modelAndView;
     }
 

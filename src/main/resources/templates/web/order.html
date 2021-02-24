@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: head" >
   <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -35,7 +35,7 @@
                 <td th:text="${mp.getProduct_price()}"></td>
                 <td th:text="${mp.getMoney()}"></td>
                 <td>
-                    <form method="post" th:action="@{/web/delete}">
+                    <form method="post" th:action="@{/user/delete}">
                         <input name="id" type="hidden" th:value="${mp.getOder_id()}"/>
                         <input name="id2" type="hidden" th:value="${id2}"/>
                         <input type="submit" value="Delete">
@@ -43,7 +43,7 @@
                     <!--                <a th:href="@{/web/delete/__${mp.getOder_id()}__ }">Delete</a>-->
                 </td>
                 <td>
-                    <form method="post" th:action="@{/web/accept}">
+                    <form method="post" th:action="@{/user/accept}">
                         <input name="id" type="hidden" th:value="${mp.getOder_id()}"/>
                         <input name="id2" type="hidden" th:value="${id2}"/>
                         <input  type="submit" value="Mua">

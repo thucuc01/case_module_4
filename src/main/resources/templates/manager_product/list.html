@@ -2,48 +2,55 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>Title</title>
 </head>
 <body>
-<a href="/create">Create new Product</a>
-<br>
-<a href="/quanly/create_manager">Nhap kho</a>
-<h1>List Product</h1>
-<form>
-    Search by ID_Product:
-    <input name="s" type="text"/>
-    <input type="submit" th:value="Search"/>
-</form><br/>
+<header th:replace="/manager_product/layout :: header"></header>
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Create add</th>
-        <th>HSD</th>
-        <th>NSX</th>
-        <th>Quantity</th>
-        <th>Product ID</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-    <th:block th:each="mp : ${manageproducts}">
+<div class="container">
+    <a href="/create">Create new Product</a>
+    <br>
+    <a href="/quanly/create_manager">Nhap kho</a>
+    <h1>List Product</h1>
+    <form>
+        Search by ID_Product:
+        <input name="s" type="text"/>
+        <input type="submit" th:value="Search"/>
+    </form><br/>
+
+    <table border="1"  class="table table-dark table-striped">
         <tr>
-            <td th:text="${mp.id}"></td>
-            <td th:text="${mp.getDate_Added()}"></td>
-            <td th:text="${mp.getHsd()}"></td>
-            <td th:text="${mp.getNsx()}"></td>
-            <td th:text="${mp.getQuantity()}"></td>
-            <td th:text="${mp.getProduct().getId()}"></td>
-            <td><a th:href="@{/quanly/edit/__${mp.id}__ }">Edit</a></td>
-            <td><a th:href="@{/quanly/delete/__${mp.id}__ }">Delete</a></td>
+            <th>ID</th>
+            <th>Create add</th>
+            <th>HSD</th>
+            <th>NSX</th>
+            <th>Quantity</th>
+            <th>Product ID</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
-    </th:block>
-</table>
-<div>
-    <a th:href="@{'/quanly/show'(page=${manageproducts.number})}" th:if="${manageproducts.hasPrevious()}">Previous</a>
-    <span th:text="${manageproducts.number + 1}"></span>/<span th:text="${manageproducts.totalPages}"></span>
-    <a th:href="@{'/quanly/show'(page=${manageproducts.number + 2})}" th:if="${manageproducts.hasNext()}">Next</a>
+        <th:block th:each="mp : ${manageproducts}">
+            <tr>
+                <td th:text="${mp.id}"></td>
+                <td th:text="${mp.getDate_Added()}"></td>
+                <td th:text="${mp.getHsd()}"></td>
+                <td th:text="${mp.getNsx()}"></td>
+                <td th:text="${mp.getQuantity()}"></td>
+                <td th:text="${mp.getProduct().getId()}"></td>
+                <td><a th:href="@{/quanly/edit/__${mp.id}__ }">Edit</a></td>
+                <td><a th:href="@{/quanly/delete/__${mp.id}__ }">Delete</a></td>
+            </tr>
+        </th:block>
+    </table>
+    <div>
+        <a th:href="@{'/quanly/show'(page=${manageproducts.number})}" th:if="${manageproducts.hasPrevious()}">Previous</a>
+        <span th:text="${manageproducts.number + 1}"></span>/<span th:text="${manageproducts.totalPages}"></span>
+        <a th:href="@{'/quanly/show'(page=${manageproducts.number + 2})}" th:if="${manageproducts.hasNext()}">Next</a>
+    </div>
 </div>
+<footer th:replace="/manager_product/layout :: footer"></footer>
 
 </body>
 </html>

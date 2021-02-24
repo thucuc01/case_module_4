@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spring Customer</title>
+
+
+</head>
+<body>
+<header th:fragment="header">
+    <!--    <th:block th:if="${!session.isEmpty()}">-->
+    <!--        <p th:text="${session.customer.getId()}"></p>-->
+    <!--    </th:block>-->
+    <div class="container" style="color: white">
+        <h3 style="font-max-size: medium" th:bgcolor="pink">Teddy Shop</h3>
+        <div>
+
+<!--            <form method="post" th:action="@{/web/oder}" >-->
+<!--                &lt;!&ndash;                <input type="text" name="customerId">&ndash;&gt;-->
+<!--                <th:block th:if="${!session.isEmpty()}">-->
+<!--                    <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>-->
+<!--                </th:block>-->
+<!--                <button class="btn btn-success" type="submit">Gio hang</button>-->
+<!--            </form>-->
+
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-light" style="background-color: black" >
+        <div class="container" >
+            <div>
+                <a class="navbar-brand" th:href="@{/quanly/show}" style="color: white">MANAGER</a>
+                <!--                <a class="navbar-brand">Category</a>-->
+                <a class="navbar-brand"th:href="@{/home}" style="color: white">PRODUCT</a>
+                <a class="navbar-brand" href="#" style="color: white">USER</a>
+            </div>
+            <div>
+                <form class="d-flex" th:action="@{/quanly/show}" method="get">
+                    <input class="form-control me-2" type="text" name="s" placeholder="SearchByName" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+
+        </div>
+    </nav>
+<!--    <div class="container">-->
+<!--        <form style="text-align: right">-->
+<!--            <button class="btn btn-success" type="submit" name="s1">SortByPrice</button>-->
+<!--        </form>-->
+<!--    </div>-->
+
+</header>
+
+<footer th:fragment="footer">
+    <div style="line-height: 120px ;text-align: center;">
+        &copy; 2021 Admin
+
+    </div>
+</footer>
+</body>
+</html>

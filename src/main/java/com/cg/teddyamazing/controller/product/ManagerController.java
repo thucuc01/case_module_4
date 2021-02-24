@@ -5,18 +5,15 @@ import com.cg.teddyamazing.model.product.*;
 import com.cg.teddyamazing.service.product.ManagerProductService;
 import com.cg.teddyamazing.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.Optional;
 
 @Controller
