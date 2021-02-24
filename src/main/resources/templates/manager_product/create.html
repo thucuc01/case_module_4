@@ -6,20 +6,18 @@
     <title>Title</title>
 </head>
 <body>
+<header th:replace="/manager_product/layout :: header"></header>
 <div class="container">
-    <h1>Create quantity product</h1>
+    <hr>
+    <h1>Nhập kho</h1>
 
-    <a href="/create">Create new Product</a>
-    <p>
-        <a href="/home">Product list</a>
-    </p>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
     </th:block>
     <form th:action="@{/quanly/create-Mproduct}"
           th:object="${manageProduct}"
           method="post">
-        <table>
+        <table border="1"  class="table table-dark table-striped">
             <tr>
                 <td>ID:</td>
                 <td><input type="text" th:field="*{id}"/></td>
@@ -27,12 +25,12 @@
             </tr>
             <tr>
                 <td>NSX :</td>
-                <td><input type="date" name="date" th:field="*{nsx}" placeholder="yyyy-MM-dd"/></td>
+                <td><input type="date" name="date" th:field="*{nsx}"/></td>
                 <!--            <td th:if="${#fields.hasErrors('nsx')}" th:errors="*{nsx}">Name Error</td>-->
             </tr>
             <tr>
                 <td>HSD :</td>
-                <td><input type="date" th:field="*{hsd}" placeholder="yyyy-MM-dd"/></td>
+                <td><input type="date" th:field="*{hsd}"/></td>
                 <!--             <td th:if="${#fields.hasErrors('hsd')}" th:errors="*{hsd}">Name Error</td>-->
             </tr>
 
@@ -52,10 +50,12 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Add"></td>
+                <td><input class="btn btn-danger" type="submit" value="Add"></td>
             </tr>
         </table>
     </form>
 </div>
+<footer th:replace="/manager_product/layout :: footer"></footer>
+
 </body>
 </html>

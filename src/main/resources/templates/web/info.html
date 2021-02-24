@@ -3,7 +3,6 @@
 <head th:replace="/layout :: head" >
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <title>Title</title>
 </head>
 <body>
@@ -13,34 +12,34 @@
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
     </th:block>
-<form th:action="@{/user/create-order}" th:object="${product}" method="post">
+<form class="form" th:action="@{/user/create-order}" th:object="${product}" method="post">
 
         <div class="row">
             <div class="col-md-7">
-                <img class="img-fluid" th:src="${'http://localhost:8080/'+ product.img}" width="400" height="200">
+                <img class="img-fluid" th:src="${'http://localhost:8080/'+ product.img}">
                 <input type="hidden" name="imga" th:value="*{img}">
                 <td><input name="id" type="hidden" th:field="*{id}"/></td>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5" style="border: 1px solid darkgray">
                 <div class="card-body">
 <!--                                    <span>Customer ID Test:</span>-->
                     <th:block th:if="${!session.isEmpty()}">
                         <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
                     </th:block>
 
-                    <h4 class="card-title" th:text="${product.name}"></h4>
+                    <h3 style="color: firebrick" class="card-title" th:text="${product.name}"></h3>
                     <input type="hidden" th:field="*{name}"/>
                     <input type="hidden" th:field="*{desv}"/>
                     <input type="hidden" th:field="*{price}"/>
                     <input type="hidden" th:field="*{size}"/>
                     <input type="hidden" th:field="*{category}"/>
                     <hr>
-                    Mô tả :<p class="card-text" th:text="${product.desv}"></p>
+                    <h5>Mô tả :</h5><p class="card-text" th:text="${product.desv}"></p>
                     Size : <span th:text="${product.size.getName()}"></span>
                     <br>
-                    Giá : <span th:text="${product.price}"></span>
+                    <h5>Giá : </h5><span th:text="${product.price}"></span>
                     <hr>
-                    Số lượng : <input type="text" name="quantity">
+                    <h5>Số lượng : </h5> <input type="text" name="quantity">
                     <hr>
                     <input type="submit"class="btn btn-danger" value=" Them vao gio hang ">
                 </div>
@@ -48,7 +47,8 @@
         </div>
 
 </form>
-    <h4>Sản phẩm tương tự :</h4>
+
+    <h4 style="margin-top: 15px">Sản phẩm tương tự :</h4>
     <hr>
     <div class="row">
         <div class="col-md-3" th:each="p:${productWebs}">

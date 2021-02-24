@@ -17,22 +17,22 @@
         <table class="table table-striped">
             <tr>
                 <td><label for="firstName">First Name:</label></td>
-                <td><input type="text" name="firstName" th:field="*{firstName}" id="firstName"/></td>
+                <td><input class="input-group" type="text" name="firstName" th:field="*{firstName}" id="firstName"/></td>
                 <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></td>
             </tr>
             <tr>
                 <td><label for="lastName">First Name:</label></td>
-                <td><input type="text" name="lastName" th:field="*{lastName}" id="lastName"/></td>
+                <td><input class="input-group" type="text" name="lastName" th:field="*{lastName}" id="lastName"/></td>
                 <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></td>
             </tr>
             <tr>
                 <td><label for="address">Address:</label></td>
-                <td><input type="text" name="address" th:field="*{address}" id="address"/></td>
+                <td><input class="input-group" type="text" name="address" th:field="*{address}" id="address"/></td>
                 <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></td>
             </tr>
             <tr>
                 <td><label for="phoneNumber">Phone Number:</label></td>
-                <td><input type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
+                <td><input class="input-group" type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
                 <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
             </tr>
 

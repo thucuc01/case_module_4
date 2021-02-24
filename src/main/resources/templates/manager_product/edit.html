@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
+<head th:replace="/layout :: head">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -9,19 +9,16 @@
 <body>
 <header th:replace="/manager_product/layout :: header"></header>
 <div class="container">
-    <h1>Create quantity product</h1>
+    <hr>
+    <h1>Update kho</h1>
 
-    <a href="/create">Create new Product</a>
-    <p>
-        <a href="/quanly/show">Quan ly kho</a>
-    </p>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
     </th:block>
     <form th:action="@{/quanly/create-Mproduct}"
           th:object="${manageProducts}"
           method="post">
-        <table>
+        <table border="1"  class="table table-dark table-striped">
             <tr>
                 <td>ID:</td>
                 <td><input type="text" th:field="*{id}"/></td>
@@ -29,17 +26,17 @@
             </tr>
             <tr>
                 <td>Ngay Add:</td>
-                <td><input type="text" th:field="*{date_Added}"/></td>
+                <td><input type="date" th:field="*{date_Added}"/></td>
                 <!--            <td th:if="${#fields.hasErrors('nsx')}" th:errors="*{nsx}">Name Error</td>-->
             </tr>
             <tr>
                 <td>NSX:</td>
-                <td><input type="text" th:field="*{nsx}"/></td>
+                <td><input type="date" th:field="*{nsx}"/></td>
                 <!--            <td th:if="${#fields.hasErrors('nsx')}" th:errors="*{nsx}">Name Error</td>-->
             </tr>
             <tr>
                 <td>HSD:</td>
-                <td><input type="text" th:field="*{hsd}"/></td>
+                <td><input type="date" th:field="*{hsd}"/></td>
                 <!--                                    <td th:if="${#fields.hasErrors('hsd')}" th:errors="*{hsd}">Name Error</td>-->
             </tr>
 
@@ -59,7 +56,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Edit"></td>
+                <td><input class="btn btn-danger" type="submit" value="Edit"></td>
             </tr>
         </table>
     </form>
