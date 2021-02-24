@@ -20,8 +20,7 @@ import java.util.Optional;
 public class ManagerServiceImpl implements ManagerProductService {
     @Autowired
     public ManagerProductRepo managerProductRepo;
-    @PersistenceContext
-    private EntityManager em;
+
 
     @Override
     public Page<ManageProducts> findAll(Pageable pageable) {

@@ -247,12 +247,20 @@ public class WebController {
         if(id.isPresent()){
             List<OderWeb> list=oderService.findByCustomer_IdAndStatusAccept(id.get());
             Long id2=id.get();
-            modelAndView=new ModelAndView("web/order","list",list);
+            modelAndView=new ModelAndView("web/order-accept","list",list);
             modelAndView.addObject("id2",id2);
             return modelAndView;
         }
         modelAndView=new ModelAndView("web/list","message","chua co thong tin");
         return modelAndView;
+    }
+    @GetMapping("/edit/{id}")
+    public ModelAndView editOrder(@PathVariable Long id){
+
+        Oder oder=oderService.findById(id);
+        ModelAndView modelAndView=new ModelAndView("web/edit-order","oder",oder);
+        return modelAndView;
+
     }
 
 
