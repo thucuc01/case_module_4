@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: head" >
     <meta charset="UTF-8" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Title</title>
 </head>
 <body>
+<header th:replace="/layout :: header"></header>
+
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
@@ -50,5 +52,7 @@
     <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
     <a th:href="@{'/customer/list'(s=${keyword}, page=${customers.number + 2})}" th:if="${customers.hasNext()}">Next</a>
 </div>
+<footer th:replace="/layout :: footer"></footer>
+
 </body>
 </html>

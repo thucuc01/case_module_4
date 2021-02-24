@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: head" >
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Edit customer</title>
 </head>
 <body>
+<header th:replace="/layout :: header"></header>
 <h1>Edit customer</h1>
 <p>
     <a href="/customer/list">Customer list</a>
@@ -77,5 +78,7 @@
 <!--        </tr>-->
     </table>
 </form>
+<footer th:replace="/layout :: footer"></footer>
+
 </body>
 </html>

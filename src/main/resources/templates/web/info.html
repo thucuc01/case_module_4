@@ -8,13 +8,11 @@
 </head>
 <body>
 <header th:replace="/layout :: header"></header>
-
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
-
+<hr>
 <div class="container">
-
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
 <form th:action="@{/user/create-order}" th:object="${product}" method="post">
 
         <div class="row">
@@ -37,12 +35,12 @@
                     <input type="hidden" th:field="*{size}"/>
                     <input type="hidden" th:field="*{category}"/>
                     <hr>
-                    MO TA :<p class="card-text" th:text="${product.desv}"></p>
+                    Mô tả :<p class="card-text" th:text="${product.desv}"></p>
                     Size : <span th:text="${product.size.getName()}"></span>
                     <br>
-                    Price: <span th:text="${product.price}"></span>
+                    Giá : <span th:text="${product.price}"></span>
                     <hr>
-                    So luong : <input type="text" name="quantity">
+                    Số lượng : <input type="text" name="quantity">
                     <hr>
                     <input type="submit"class="btn btn-danger" value=" Them vao gio hang ">
                 </div>
@@ -50,7 +48,7 @@
         </div>
 
 </form>
-    <h4>San pham tuong tu :</h4>
+    <h4>Sản phẩm tương tự :</h4>
     <hr>
     <div class="row">
         <div class="col-md-3" th:each="p:${productWebs}">

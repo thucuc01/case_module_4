@@ -8,12 +8,13 @@
 <header th:replace="/layout :: header"></header>
 
 <div class="container">
-    <h4>Nhap thong tin de co the mua hang</h4>
+    <hr>
+    <h4>Nhập thông tin để có thể sử dụng chức năng mua hàng</h4>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
     </th:block>
     <form th:action="@{/customer/create-customer}" th:object="${customer}" method="post">
-        <table>
+        <table class="table table-striped">
             <tr>
                 <td><label for="firstName">First Name:</label></td>
                 <td><input type="text" name="firstName" th:field="*{firstName}" id="firstName"/></td>
@@ -34,11 +35,7 @@
                 <td><input type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
                 <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
             </tr>
-<!--            <tr>-->
-<!--                &lt;!&ndash;            <td>Account Id:</td>&ndash;&gt;-->
-<!--                <td> <input type="hidden" name="account" th:field="*{account}" ></td>-->
-<!--                &lt;!&ndash;            <td><input type="text" name="account" ></td>&ndash;&gt;-->
-<!--            </tr>-->
+
             <tr>
                 <td></td>
                 <td><input class="btn btn-danger" type="submit" value="Create customer"></td>

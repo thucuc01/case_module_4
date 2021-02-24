@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Title</title>
 </head>
 <body>
+<header th:replace="/manager_product/layout :: header"></header>
 <div class="container">
     <h1>Create quantity product</h1>
 
@@ -63,5 +64,7 @@
         </table>
     </form>
 </div>
+<footer th:replace="/manager_product/layout :: footer"></footer>
+
 </body>
 </html>
