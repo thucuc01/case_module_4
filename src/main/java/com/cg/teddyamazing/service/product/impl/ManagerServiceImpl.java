@@ -80,4 +80,15 @@ public class ManagerServiceImpl implements ManagerProductService {
     public List<ManageProducts> findAllByProductSort(String id) {
         return managerProductRepo.findAllByProductSort(id);
     }
+
+    @Override
+    public List<ProductWeb> findAllByProduct_Category_Id(String id) {
+        return managerProductRepo.findAllByProduct_Category_Id(id);
+    }
+
+    @Override
+    public List<ProductWeb> findAllByCategoryLimit(String id, String id1){
+        return managerProductRepo.findAllByCategoryLimit(id,id1);
+    }
+
 }

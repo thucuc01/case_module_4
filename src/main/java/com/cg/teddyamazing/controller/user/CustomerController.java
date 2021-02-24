@@ -145,9 +145,14 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
+//@SessionAttributes("customer")
 @RequestMapping("/customer")
 public class CustomerController {
 
+//    @ModelAttribute("customer")
+//    public Customer setSession(){
+//        return new Customer();
+//    }
     @Autowired
     private CustomerService customerService;
 
@@ -192,17 +197,6 @@ public class CustomerController {
     @PostMapping("/create-customer")
     public ModelAndView saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult, Pageable pageable){
         ModelAndView modelAndView;
-
-        Page<Customer> customers = customerService.findAll(pageable);
-
-        for (Customer c :customers){
-            if (c.getId().equals(customer.getId())){
-                modelAndView = new ModelAndView("customer/create");
-                modelAndView.addObject("customer",new Customer());
-                modelAndView.addObject("message","ID da ton tai");
-                return modelAndView;
-            }
-        }
 
         if (bindingResult.hasFieldErrors()){
             modelAndView = new ModelAndView("customer/create");

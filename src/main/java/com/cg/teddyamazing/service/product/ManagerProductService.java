@@ -13,9 +13,6 @@ import java.util.Optional;
 
 public interface ManagerProductService {
     Page<ManageProducts> findAll(Pageable pageable);
-//    List<ManageProducts> findAll2();
-
-//    ManageProducts findById(String id);
 
     void save(ManageProducts manageProducts);
 
@@ -34,6 +31,10 @@ public interface ManagerProductService {
     ManageProducts findById(String id);
 
     List<ManageProducts> findAllByProductSort(String id);
+
+    List<ProductWeb> findAllByProduct_Category_Id(String id);
+
+    List<ProductWeb> findAllByCategoryLimit(String id,String id1);
 
 
 

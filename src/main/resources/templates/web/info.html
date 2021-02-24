@@ -13,16 +13,17 @@
     <p th:text="${message}"></p>
 </th:block>
 
+<div class="container">
+
 <form th:action="@{/web/create-order}" th:object="${product}" method="post">
 
-    <div class="container">
         <div class="row">
-            <div class="col">
-                <img th:src="${'http://localhost:8080/'+ product.img}" width="400" height="200">
+            <div class="col-md-7">
+                <img class="img-fluid" th:src="${'http://localhost:8080/'+ product.img}" width="400" height="200">
                 <input type="hidden" name="imga" th:value="*{img}">
                 <td><input name="id" type="hidden" th:field="*{id}"/></td>
             </div>
-            <div class="col">
+            <div class="col-md-5">
                 <div class="card-body">
                                     <span>Customer ID Test:</span>
                                     <input type="text" name="customerId">
@@ -45,71 +46,28 @@
                 </div>
             </div>
         </div>
-    </div>
 
-
-
-
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <td>Customer ID Test:</td>-->
-<!--            <td><input type="text" name="customerId"></td>-->
-<!--        </tr>-->
-<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
-<!--            &lt;!&ndash;            <td>ID:</td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td><input name="id" type="hidden" th:field="*{id}"/></td>&ndash;&gt;-->
-<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
-<!--        <tr>-->
-<!--            <td>Name:</td>-->
-<!--            <td><input type="text" th:field="*{name}"/></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Desv:</td>-->
-<!--            <td><input type="text" th:field="*{desv}"/></td>-->
-<!--        </tr>-->
-
-<!--        <tr>-->
-<!--            <td>Price:</td>-->
-<!--            <td><input type="text" th:field="*{price}"/></td>-->
-<!--        </tr>-->
-
-<!--        <tr>-->
-<!--            <td>Category:</td>-->
-<!--            <td>-->
-<!--                <select th:field="*{category}">-->
-<!--                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>-->
-<!--                </select>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Size:</td>-->
-<!--            <td>-->
-<!--                <select th:field="*{size}">-->
-<!--                    <option th:each="s : ${sizes}"-->
-<!--                            th:value="${s.id}"-->
-<!--                            th:text="${s.name}"></option>-->
-<!--                </select>-->
-<!--            </td>-->
-<!--        </tr>-->
-
-<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td>Img:</td>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <img th:src="${'http://localhost:8080/'+ product.img}" width="400" height="200">&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="hidden" name="imga" th:value="*{img}">&ndash;&gt;-->
-<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
-<!--        <tr>-->
-<!--            <td>Quantity : </td>-->
-
-<!--            <td><input type="text" name="quantity"> </td>-->
-
-<!--        <tr>-->
-<!--            <td></td>-->
-<!--            <td><input type="submit" value=" Them vao gio hang "></td>-->
-<!--        </tr>-->
-<!--    </table>-->
 </form>
+    <h4>San pham tuong tu :</h4>
+    <hr>
+    <div class="row">
+        <div class="col-md-3" th:each="p:${productWebs}">
+            <a th:href="@{/web/info/__${p.getProduct_id()}__}"></a>
+            <div class="card">
+                <img th:src="${'http://localhost:8080/'+p.getP_img()}" class="card-img-top" alt="Loading.....">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${p.getP_name()}"></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+
+                        <div th:text="${p.getP_price()}" ></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer th:replace="/layout :: footer"></footer>
 

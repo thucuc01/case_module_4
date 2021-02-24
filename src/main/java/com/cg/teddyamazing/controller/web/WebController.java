@@ -26,12 +26,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@SessionAttributes("customer")
 @RequestMapping("/web")
 public class WebController {
     @Autowired
     public ManagerProductService managerProductService;
     @Autowired
     public ProductService productService;
+
+    @ModelAttribute("customer")
+    public Customer setSession(){
+        return new Customer();
+    }
 
     @Autowired
     public CustomerService customerService;
@@ -67,8 +73,7 @@ public class WebController {
 
     @GetMapping
     public ModelAndView showList(@RequestParam("s") Optional<String> s,
-                                 @RequestParam("s1") Optional<String> s1,
-                                 @RequestParam("page") Optional<Integer> page){
+                                 @RequestParam("s1") Optional<String> s1){
         List<ProductWeb> manageProducts;
         String name;
         if(s.isPresent()){
@@ -93,8 +98,11 @@ public class WebController {
     public ModelAndView showInfo(@PathVariable String id){
         Product product = productService.findById(id);
         if(product != null) {
+            String id1=product.getCategory().getId();
+            List<ProductWeb> productWebs= managerProductService.findAllByCategoryLimit(id1,id);
             ModelAndView modelAndView = new ModelAndView("web/info");
             modelAndView.addObject("product", product);
+            modelAndView.addObject("productWebs", productWebs);
             return modelAndView;
 
         }else {
@@ -226,6 +234,19 @@ public class WebController {
             manageProducts.setQuantity(0);
         }
         modelAndView.addObject("message", "Tao don hang thanh cong");
+        return modelAndView;
+    }
+
+    @GetMapping("/list/{id}")
+    public ModelAndView getListCategories(@PathVariable String id,@RequestParam("s") Optional<String> s,
+                                          @RequestParam("s1") Optional<String> s1){
+        ModelAndView modelAndView;
+
+
+        List<ProductWeb> manageProducts;
+        manageProducts= managerProductService.findAllByProduct_Category_Id(id);
+        modelAndView=new ModelAndView("web/list");
+        modelAndView.addObject("manageproducts",manageProducts);
         return modelAndView;
     }
 
