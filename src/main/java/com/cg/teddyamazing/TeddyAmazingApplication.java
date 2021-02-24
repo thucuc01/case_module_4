@@ -12,9 +12,7 @@ import com.cg.teddyamazing.service.product.impl.CategoryServiceImpl;
 import com.cg.teddyamazing.service.product.impl.ManagerServiceImpl;
 import com.cg.teddyamazing.service.product.impl.ProductServiceImpl;
 import com.cg.teddyamazing.service.product.impl.SizeServiceImpl;
-import com.cg.teddyamazing.service.user.AccountService;
 import com.cg.teddyamazing.service.user.CustomerService;
-import com.cg.teddyamazing.service.user.impl.AccountServiceImpl;
 import com.cg.teddyamazing.service.user.impl.CustomerServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -59,9 +57,9 @@ public class TeddyAmazingApplication {
     public OrderDetailService orderDetailService(){
         return new OrderDetailServiceImpl();
     }
-    @Bean
-    public AccountService accountService(){
-        return new AccountServiceImpl();
-    }
+//    @Bean
+//    public AccountService accountService(){
+//        return new AccountServiceImpl();
+//    }
 
 }

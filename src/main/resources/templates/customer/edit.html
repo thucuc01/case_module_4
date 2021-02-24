@@ -38,11 +38,11 @@
             <td><input type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
             <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
         </tr>
-        <tr>
-<!--            <td>Account Id:</td>-->
-            <td> <input type="hidden" name="account" th:field="*{account}" ></td>
-<!--            <td><input type="text" name="account" ></td>-->
-        </tr>
+<!--        <tr>-->
+<!--&lt;!&ndash;            <td>Account Id:</td>&ndash;&gt;-->
+<!--            <td> <input type="hidden" name="account" th:field="*{account}" ></td>-->
+<!--&lt;!&ndash;            <td><input type="text" name="account" ></td>&ndash;&gt;-->
+<!--        </tr>-->
         <tr>
             <td></td>
             <td><input type="submit" value="Update customer"></td>

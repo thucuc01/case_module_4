@@ -9,10 +9,7 @@
 <header th:replace="/layout :: header"></header>
 
 <div class="container">
-    <h1>Create customer</h1>
-    <p>
-        <a href="/customer/list">Customer list</a>
-    </p>
+    <h4>Nhap thong tin de co the mua hang</h4>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
     </th:block>
@@ -38,11 +35,11 @@
                 <td><input type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
                 <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
             </tr>
-            <tr>
-                <!--            <td>Account Id:</td>-->
-                <td> <input type="hidden" name="account" th:field="*{account}" ></td>
-                <!--            <td><input type="text" name="account" ></td>-->
-            </tr>
+<!--            <tr>-->
+<!--                &lt;!&ndash;            <td>Account Id:</td>&ndash;&gt;-->
+<!--                <td> <input type="hidden" name="account" th:field="*{account}" ></td>-->
+<!--                &lt;!&ndash;            <td><input type="text" name="account" ></td>&ndash;&gt;-->
+<!--            </tr>-->
             <tr>
                 <td></td>
                 <td><input class="btn btn-danger" type="submit" value="Create customer"></td>

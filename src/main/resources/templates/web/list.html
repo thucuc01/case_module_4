@@ -7,11 +7,12 @@
 </head>
 <body>
 <header th:replace="/layout :: header"></header>
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
+
 <div class="container">
 
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
     <br>
     <div class="row">
         <th:block th:each="mp : ${manageproducts}">

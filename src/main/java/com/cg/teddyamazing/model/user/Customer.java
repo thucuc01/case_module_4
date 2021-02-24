@@ -21,30 +21,30 @@ public class Customer {
 
     @Column(unique = true)
     @NotEmpty(message = "pease input your phone number")
-    @Pattern(regexp = "^[0][0-9]{9}$",message = "sdt star 0, 0-9, size=10")
+    @Pattern(regexp = "^[0][0-9]{9}$", message = "sdt star 0, 0-9, size=10")
     private String phoneNumber;
-    @OneToOne
-    @JoinColumn
-    private Account account;
+//    @OneToOne
+//    @JoinColumn
+//    private Account account;
 
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String address, String phoneNumber,Account account) {
+    public Customer(String firstName, String lastName, String address, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.account = account;
+//        this.account = account;
     }
 
-    public Customer(Long id, @NotEmpty(message = "please input your first name") String firstName, @NotEmpty(message = "pease input your last name") String lastName, @NotEmpty(message = "pease input your address") String address, @NotEmpty(message = "pease input your phone number") String phoneNumber, Account account) {
+    public Customer(Long id, @NotEmpty(message = "please input your first name") String firstName, @NotEmpty(message = "pease input your last name") String lastName, @NotEmpty(message = "pease input your address") String address, @NotEmpty(message = "pease input your phone number") String phoneNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.account = account;
+//        this.account = account;
     }
 
     public Long getId() {
@@ -87,11 +87,4 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
 }

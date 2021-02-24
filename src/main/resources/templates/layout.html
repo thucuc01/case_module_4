@@ -17,7 +17,7 @@
 
     <div class="container">
         <div>
-            <form method="post" th:action="@{/web/oder}" style="text-align: right">
+            <form method="post" th:action="@{/user/oder}" style="text-align: right">
                 <th:block th:if="${!session.isEmpty()}">
                     <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
                 </th:block>
@@ -47,6 +47,7 @@
                     <button class="btn btn-success" type="submit" name="s1">Sort-By-Price</button>
                 </form>
             </div>
+
             <div>
                 <form class="d-flex" th:action="@{/user}" method="get">
                     <input class="form-control" type="text" name="s" placeholder="Search-By-Name......" aria-label="Search">

@@ -13,7 +13,15 @@
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
     </th:block>
-    <table border="1">
+    <div>
+        <form method="post" th:action="@{/user/oderAccept}" style="text-align: right">
+            <th:block th:if="${!session.isEmpty()}">
+                <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
+            </th:block>
+            <button class="btn btn-light" type="submit"><i class="far fa-address-book" style="color: red" > Hoa don </i></button>
+        </form>
+    </div>
+    <table class="table table-bordered">
         <tr>
             <th>Name Product</th>
             <th>Quantity</th>
