@@ -2,64 +2,113 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Spring Customer</title>
+    <title>Admin</title>
+    <style>
 
+        body {
+            background-image: url("http://taihinhanhdep.xyz/wp-content/uploads/2015/11/anh-dep-cho-dien-thoai-1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .dropbtn {
+            background-color: firebrick;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: firebrick;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+    </style>
 
 </head>
+
 <body>
 <header th:fragment="header">
-    <!--    <th:block th:if="${!session.isEmpty()}">-->
-    <!--        <p th:text="${session.customer.getId()}"></p>-->
-    <!--    </th:block>-->
-    <div class="container" style="color: white">
+    <div  style="color: white">
         <h3 style="font-max-size: medium" th:bgcolor="pink">Teddy Shop</h3>
-        <div>
 
-<!--            <form method="post" th:action="@{/web/oder}" >-->
-<!--                &lt;!&ndash;                <input type="text" name="customerId">&ndash;&gt;-->
-<!--                <th:block th:if="${!session.isEmpty()}">-->
-<!--                    <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>-->
-<!--                </th:block>-->
-<!--                <button class="btn btn-success" type="submit">Gio hang</button>-->
-<!--            </form>-->
+        <nav class="navbar navbar-light" style="background-color: black" >
+            <div class="container">
 
-        </div>
+                    <div class="col">
+                        <div class="dropdown">
+                            <button class="btn btn-danger dropdown-toggle">MANAGER</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/quanly/create_manager}">Nhập kho</a>
+                                <a th:href="@{/quanly/show}">Manager</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-danger dropdown-toggle">PRODUCT</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/home}">Sản phẩm</a>
+                                <a th:href="@{/create}">Thêm sản phẩm</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-danger dropdown-toggle">CUSTOMER</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/customer/list}">List Customer</a>
+                                <a th:href="@{/customer/create}">Add customer</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                    </div>
+
+                </div>
+
+
+        </nav>
     </div>
+<!--            <div>-->
+<!--                <form class="d-flex" th:action="@{/quanly/show}" method="get">-->
+<!--                    <input class="form-control me-2" type="text" name="s" placeholder="SearchByName" aria-label="Search">-->
+<!--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--                </form>-->
+<!--            </div>-->
 
 
-    <nav class="navbar navbar-light" style="background-color: black" >
-        <div class="container" >
-            <div>
-                <a class="navbar-brand" th:href="@{/quanly/show}" style="color: white">MANAGER</a>
-                <!--                <a class="navbar-brand">Category</a>-->
-                <a class="navbar-brand"th:href="@{/home}" style="color: white">PRODUCT</a>
-                <a class="navbar-brand" th:href="@{/customer/list}" style="color: white">CUSTOMER</a>
-            </div>
-            <div>
-                <form class="d-flex" th:action="@{/quanly/show}" method="get">
-                    <input class="form-control me-2" type="text" name="s" placeholder="SearchByName" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
 
-        </div>
-    </nav>
-<!--    <div class="container">-->
-<!--        <form style="text-align: right">-->
-<!--            <button class="btn btn-success" type="submit" name="s1">SortByPrice</button>-->
-<!--        </form>-->
-<!--    </div>-->
+
+
 
 </header>
 
-<footer th:fragment="footer">
+<footer th:fragment="footer" style="color: #f9f9f9">
     <div style="line-height: 120px ;text-align: center;">
-        &copy; 2021 Admin
-
+        &copy; 2021 ADMIN
     </div>
 </footer>
 </body>

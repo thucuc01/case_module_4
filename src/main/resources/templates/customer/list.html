@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head">
+<head th:replace="/manager_product/layout :: head">
     <meta charset="UTF-8" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Title</title>
@@ -26,6 +26,8 @@
             <td>First name</td>
             <th>Last name</th>
             <th>Province</th>
+            <th>Phone Number</th>
+
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -37,11 +39,10 @@
                 <td th:text="${customer.lastName}"></td>
                 <td th:text="${customer.address}"></td>
                 <td th:text="${customer.phoneNumber}"></td>
-                <td th:text="${customer.phoneNumber}"></td>
-                <td><a th:href="@{/customer/edit-customer/__${customer.id}__ }">Edit</a></td>
+                <td><a class="btn btn-warning" th:href="@{/customer/edit-customer/__${customer.id}__ }">Edit</a></td>
                 <!--            <td><a th:href="@{/delete-customer/__${customer.id}__ }">Delete</a></td>-->
                 <td><form th:action="@{/customer/delete-customer}" th:method="post" >
-                    <input th:type="submit" th:value="delete" />
+                    <input class="btn btn-danger" th:type="submit" th:value="delete" />
                     <input th:type="hidden" th:value="${customer.id}" th:name="id"/>
                 </form></td>
             </tr>

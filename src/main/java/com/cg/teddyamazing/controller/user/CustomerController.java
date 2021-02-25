@@ -210,7 +210,6 @@ public class CustomerController {
         modelAndView = new ModelAndView("customer/create");
         modelAndView.addObject("customer",new Customer());
         modelAndView.addObject("message", "da them khach hang thanh cong");
-
         return modelAndView;
     }
 
