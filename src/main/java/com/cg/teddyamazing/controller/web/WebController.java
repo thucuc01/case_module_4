@@ -62,7 +62,7 @@ public class WebController {
         return productService.findAll();
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ModelAndView showList(@RequestParam("s") Optional<String> s,
                                  @RequestParam("s1") Optional<String> s1){
         List<ProductWeb> manageProducts;
