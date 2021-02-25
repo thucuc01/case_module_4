@@ -9,14 +9,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Spring Boot</title>
-<style>
-
-</style>
+    <style>
+        #login-button {
+            float: right;
+            width: 150px;
+            height: 100px;
+            margin-top: 10px;
+        }
+        #cart-button {
+            float: right;
+            width: 100px;
+            height: 100px;
+        }
+        #nav-bar {
+            clear: both;
+        }
+        #teddy-logo {
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-top: 10px;
+        }
+        #teddy-mark {
+            float: left;
+        }
+        body {
+            background-image: url("https://wallpapercave.com/wp/SiaGVxD.gif");
+        }
+    </style>
 
 </head>
 <body>
 <header th:fragment="header" style="background: beige">
+    <div id="teddy-logo">
+        <img src="https://www.flaticon.com/svg/vstatic/svg/620/620744.svg?token=exp=1614159755~hmac=bee0ae14d5114c4ee5b8e8b12e8c0985">
+    </div>
 
+    <div id="teddy-mark">
+        <h1>Teddy Shop</h1>
+    </div>
     <div class="container">
         <div>
             <form method="post" th:action="@{/user/oder}" style="text-align: right">
@@ -61,3 +92,6 @@
 </footer>
 </body>
 </html>
+
+
+

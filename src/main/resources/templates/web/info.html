@@ -10,7 +10,7 @@
 <hr>
 <div class="container">
     <th:block th:if="${message}">
-        <p th:text="${message}"></p>
+        <p style="color: firebrick" th:text="${message}"></p>
     </th:block>
 <form class="form" th:action="@{/user/create-order}" th:object="${product}" method="post">
 
@@ -20,7 +20,7 @@
                 <input type="hidden" name="imga" th:value="*{img}">
                 <td><input name="id" type="hidden" th:field="*{id}"/></td>
             </div>
-            <div class="col-md-5" style="border: 1px solid darkgray">
+            <div class="col-md-5" style="height:85%;width: 35%;background: rgba(0,0,0,0.3);color: white">
                 <div class="card-body">
 <!--                                    <span>Customer ID Test:</span>-->
                     <th:block th:if="${!session.isEmpty()}">

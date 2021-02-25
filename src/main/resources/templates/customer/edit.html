@@ -7,48 +7,56 @@
 </head>
 <body>
 <header th:replace="/layout :: header"></header>
-<h1>Edit customer</h1>
-<p>
-    <a href="/customer/list">Customer list</a>
-</p>
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
-<form th:action="@{/customer/edit-customer}" th:object="${customer}" method="post">
-    <input th:type="hidden" name="id" th:field="*{id}">
+
+<div class="container" >
+    <h1>Edit customer</h1>
+    <th:block th:if="${message}">
+        <p style="color: red" th:text="${message}"></p>
+    </th:block>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" style="height:85%;width: 35%;background: rgba(0,0,0,0.3);color: white">
+            <form th:action="@{/customer/edit-customer}" th:object="${customer}" method="post">
+                <input th:type="hidden" name="id" th:field="*{id}">
+
+                <table>
+                    <tr>
+                        <td><label for="firstName">First Name:</label></td>
+                        <td><input type="text" name="firstName" th:field="*{firstName}" id="firstName"/></td>
+                        <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="lastName">First Name:</label></td>
+                        <td><input type="text" name="lastName" th:field="*{lastName}" id="lastName"/></td>
+                        <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Address:</label></td>
+                        <td><input type="text" name="address" th:field="*{address}" id="address"/></td>
+                        <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="phoneNumber">Phone Number:</label></td>
+                        <td><input type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
+                        <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
+                    </tr>
+                    <!--        <tr>-->
+                    <!--&lt;!&ndash;            <td>Account Id:</td>&ndash;&gt;-->
+                    <!--            <td> <input type="hidden" name="account" th:field="*{account}" ></td>-->
+                    <!--&lt;!&ndash;            <td><input type="text" name="account" ></td>&ndash;&gt;-->
+                    <!--        </tr>-->
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Update customer"></td>
+                    </tr>
+                </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 
 
-    <table>
-        <tr>
-            <td><label for="firstName">First Name:</label></td>
-            <td><input type="text" name="firstName" th:field="*{firstName}" id="firstName"/></td>
-            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></td>
-        </tr>
-        <tr>
-            <td><label for="lastName">First Name:</label></td>
-            <td><input type="text" name="lastName" th:field="*{lastName}" id="lastName"/></td>
-            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></td>
-        </tr>
-        <tr>
-            <td><label for="address">Address:</label></td>
-            <td><input type="text" name="address" th:field="*{address}" id="address"/></td>
-            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></td>
-        </tr>
-        <tr>
-            <td><label for="phoneNumber">Phone Number:</label></td>
-            <td><input type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
-            <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
-        </tr>
-<!--        <tr>-->
-<!--&lt;!&ndash;            <td>Account Id:</td>&ndash;&gt;-->
-<!--            <td> <input type="hidden" name="account" th:field="*{account}" ></td>-->
-<!--&lt;!&ndash;            <td><input type="text" name="account" ></td>&ndash;&gt;-->
-<!--        </tr>-->
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Update customer"></td>
-        </tr>
-    </table>
+</div>
+
 
 
 <!--    -->
@@ -76,7 +84,7 @@
 <!--            <td></td>-->
 <!--            <td><input type="submit" value="Update customer"></td>-->
 <!--        </tr>-->
-    </table>
+
 </form>
 <footer th:replace="/layout :: footer"></footer>
 
