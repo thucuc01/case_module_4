@@ -157,7 +157,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/list")
+    @GetMapping("/admin/list")
     public ModelAndView showList(@RequestParam("s") Optional<String> s,
                                  @RequestParam("s1") Optional<String> s1,
                                  @RequestParam("page") Optional<Integer> page,
