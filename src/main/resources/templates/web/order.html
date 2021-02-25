@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head" >
+<head th:replace="/layoutweb :: head" >
   <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Title</title>
 </head>
 <body>
-<header th:replace="/layout :: header"></header>
+<header th:replace="/layoutweb :: header"></header>
 
 <div class="container">
     <th:block th:if="${message}">
@@ -63,6 +63,6 @@
     </table>
 </div>
 
-<footer th:replace="/layout :: footer"></footer>
+<footer th:replace="/layoutweb :: footer"></footer>
 </body>
 </html>
