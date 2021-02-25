@@ -125,7 +125,7 @@
         </div>
 
         <div id="teddy-mark">
-            <h1>Teddy Shop</h1>
+            <h1 style="font-size:3vw;" >Teddy shop</h1>
         </div>
 
         <div>
@@ -142,7 +142,7 @@
                 <div class="dropdown" style="float: right" >
 
                     <th:block th:if="${!session.isEmpty()}" >
-                        <button class="dropbtn">Dropdown</button>
+                        <button class="dropbtn">Skrttttt</button>
                         <div class="dropdown-content">
                             <a th:href="@{/customer/create}">Edit information</a>
                             <a th:href="@{/logout}">Log out</a>
@@ -150,7 +150,7 @@
                     </th:block>
 
                     <th:block th:if="${session == null || session.isEmpty()}">
-                        <button class="dropbtn" >Dropdown</button>
+                        <button class="dropbtn" >Skrttttt</button>
                         <div class="dropdown-content">
                             <a th:href="@{/logout}">Log out</a>
                         </div>
