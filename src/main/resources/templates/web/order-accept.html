@@ -14,7 +14,7 @@
         <p th:text="${message}"></p>
     </th:block>
     <div>
-        <form method="post" th:action="@{/user/oderAccept}" style="text-align: right">
+        <form method="post" th:action="@{/web/oderAccept}" style="text-align: right">
             <th:block th:if="${!session.isEmpty()}">
                 <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
             </th:block>

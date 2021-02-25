@@ -18,7 +18,7 @@
         <th:block th:each="mp : ${manageproducts}">
             <hr>
             <div class="col-md-4">
-                <a th:href="@{/user/info/__${mp.getProduct_id()}__}">
+                <a th:href="@{/web/info/__${mp.getProduct_id()}__}">
                 <div class="card">
                     <img th:src="${'http://localhost:8080/'+mp.getP_img()}" class="img-thumbnail" alt="Loading.....">
                     <div class="card-body">

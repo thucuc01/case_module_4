@@ -14,7 +14,7 @@
         <p th:text="${message}"></p>
     </th:block>
     <div>
-        <form method="post" th:action="@{/user/oderAccept}" style="text-align: right">
+        <form method="post" th:action="@{/web/oderAccept}" style="text-align: right">
             <th:block th:if="${!session.isEmpty()}">
                 <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
             </th:block>
@@ -43,7 +43,7 @@
                 <td th:text="${mp.getProduct_price()}"></td>
                 <td th:text="${mp.getMoney()}"></td>
                 <td>
-                    <form method="post" th:action="@{/user/delete}">
+                    <form method="post" th:action="@{/web/delete}">
                         <input name="id" type="hidden" th:value="${mp.getOder_id()}"/>
                         <input name="id2" type="hidden" th:value="${id2}"/>
                         <input type="submit" value="Delete">
@@ -51,7 +51,7 @@
                 </td>
 
                 <td>
-                    <form method="post" th:action="@{/user/accept}">
+                    <form method="post" th:action="@{/web/accept}">
                         <input name="id" type="hidden" th:value="${mp.getOder_id()}"/>
                         <input name="id2" type="hidden" th:value="${id2}"/>
                         <input  type="submit" value="Mua">

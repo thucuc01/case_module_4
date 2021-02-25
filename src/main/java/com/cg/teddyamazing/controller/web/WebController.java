@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/web")
 public class WebController {
     @Autowired
     public ManagerProductService managerProductService;

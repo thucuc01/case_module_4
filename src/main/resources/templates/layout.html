@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Spring Boot</title>
+    <title>Teddy Shop</title>
     <style>
         #login-button {
             float: right;
@@ -41,42 +41,52 @@
 </head>
 <body>
 <header th:fragment="header" style="background: beige">
-    <div id="teddy-logo">
-        <img src="https://www.flaticon.com/svg/vstatic/svg/620/620744.svg?token=exp=1614159755~hmac=bee0ae14d5114c4ee5b8e8b12e8c0985">
-    </div>
 
-    <div id="teddy-mark">
-        <h1>Teddy Shop</h1>
-    </div>
     <div class="container">
+
+        <div id="teddy-logo">
+            <img src="https://www.flaticon.com/svg/vstatic/svg/620/620744.svg?token=exp=1614159755~hmac=bee0ae14d5114c4ee5b8e8b12e8c0985">
+        </div>
+
+        <div id="teddy-mark">
+            <h1>Teddy Shop</h1>
+        </div>
+
         <div>
-            <form method="post" th:action="@{/user/oder}" style="text-align: right">
-                <th:block th:if="${!session.isEmpty()}">
-                    <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
-                </th:block>
-                <button class="btn btn-light" type="submit"><i class="fas fa-shopping-cart fa-3x" style="color: red" ></i></button>
-            </form>
-            <a href="#login"><i class="fas fa-user fa-2x">  Log in</i></a>
+            <div id="cart-button">
+                <form method="post" th:action="@{/web/oder}" style="text-align: right">
+                    <th:block th:if="${!session.isEmpty()}">
+                        <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
+                    </th:block>
+                    <button class="btn btn-light" type="submit" style="background-color: beige; border-color: beige"><i class="fas fa-shopping-cart fa-3x" style="color: red;background-color: #f5f5dc; border-color: #f5f5dc" ></i></button>
+                </form>
+            </div>
+
+
+            <div id="login-button" >
+                <a href="#login"><i class="fas fa-user fa-2x">  Log in</i></a>
+            </div>
 
         </div>
 
     </div>
+    <br>
 
-    <nav class="navbar navbar-light" style="background-color: lightpink">
+    <nav id="nav-bar" class="navbar navbar-light" style="background-color: lightpink; margin-top: 100px">
         <div class="container">
             <div>
-                <a class="navbar-brand" th:href="@{/user}" style="color:red;">Trang chủ</a>
-                <a class="navbar-brand" th:each="c:${categories}"th:value="${c.id}" th:text="${c.name}" th:href="@{/user/list/__${c.id}__}"></a>
+                <a class="navbar-brand" th:href="@{/web}" style="color:red;">Trang chủ</a>
+                <a class="navbar-brand" style="color: red" th:each="c:${categories}"th:value="${c.id}" th:text="${c.name}" th:href="@{/web/list/__${c.id}__}"></a>
             </div>
-            <div>
+            <div style="float: right">
                 <form style="text-align: right">
-                    <button class="btn btn-success" type="submit" name="s1">Sort-By-Price</button>
+                    <button class="btn btn-success" type="submit" name="s1">Sort by price</button>
                 </form>
             </div>
 
             <div>
-                <form class="d-flex" th:action="@{/user}" method="get">
-                    <input class="form-control" type="text" name="s" placeholder="Search-By-Name......" aria-label="Search">
+                <form class="d-flex" th:action="@{/web}" method="get">
+                    <input class="form-control" type="text" name="s" placeholder="Search by name......" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit"><i class="fas fa-search fa-1x"></i></button>
                 </form>
             </div>
@@ -92,6 +102,3 @@
 </footer>
 </body>
 </html>
-
-
-
