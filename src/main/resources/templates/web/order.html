@@ -10,6 +10,7 @@
 <header th:replace="/layout :: header"></header>
 
 <div class="container">
+    <hr>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
     </th:block>
@@ -21,8 +22,8 @@
             <button class="btn btn-light" type="submit"><i class="far fa-address-book" style="color: red" > Hoa don </i></button>
         </form>
     </div>
-    <table class="table table-bordered">
-        <tr>
+    <table class="table table-bordered" style="width: 100%;background: rgba(0,0,0,0.5);color: white">
+        <tr style="color: darkblue">
             <th>Name Product</th>
             <th>Quantity</th>
             <th>IMG</th>
@@ -46,7 +47,7 @@
                     <form method="post" th:action="@{/web/delete}">
                         <input name="id" type="hidden" th:value="${mp.getOder_id()}"/>
                         <input name="id2" type="hidden" th:value="${id2}"/>
-                        <input type="submit" value="Delete">
+                        <input class="btn btn-danger" type="submit" value="Delete">
                     </form>
                 </td>
 
@@ -54,7 +55,7 @@
                     <form method="post" th:action="@{/web/accept}">
                         <input name="id" type="hidden" th:value="${mp.getOder_id()}"/>
                         <input name="id2" type="hidden" th:value="${id2}"/>
-                        <input  type="submit" value="Mua">
+                        <input  class="btn btn-success" type="submit" value="Mua">
                     </form>
                     <!--                <a th:href="@{/web/edit_order/__${mp.getOder_id()}__ }">Accept</a>-->
                 </td>

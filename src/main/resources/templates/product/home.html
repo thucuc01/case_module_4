@@ -52,9 +52,9 @@
                     <td th:text="${product.category.name}"></td>
                     <td th:text="${product.size.name}"></td>
                     <td ><img class="img-fluid" th:src="${product.img}" width="400" height="200"></td>
-                    <td><a th:href="@{/info/__${product.id}__ }">Info</a></td>
-                    <td><a th:href="@{/edit/__${product.id}__ }">Edit</a></td>
-                    <td><a th:href="@{/delete/__${product.id}__ }">Delete</a></td>
+                    <td><a class="btn btn-primary" th:href="@{/info/__${product.id}__ }">Info</a></td>
+                    <td><a class="btn btn-warning" th:href="@{/edit/__${product.id}__ }">Edit</a></td>
+                    <td><a class="btn btn-danger" th:href="@{/delete/__${product.id}__ }">Delete</a></td>
                 </tr>
             </th:block>
         </table>

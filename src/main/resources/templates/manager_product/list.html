@@ -32,8 +32,8 @@
                    <td th:text="${mp.getNsx()}"></td>
                    <td th:text="${mp.getQuantity()}"></td>
                    <td th:text="${mp.getProduct().getId()}"></td>
-                   <td><a th:href="@{/quanly/edit/__${mp.id}__ }">Edit</a></td>
-                   <td><a th:href="@{/quanly/delete/__${mp.id}__ }">Delete</a></td>
+                   <td><a class="btn btn-warning" th:href="@{/quanly/edit/__${mp.id}__ }">Edit</a></td>
+                   <td><a class="btn btn-danger" th:href="@{/quanly/delete/__${mp.id}__ }">Delete</a></td>
                </tr>
            </th:block>
        </table>

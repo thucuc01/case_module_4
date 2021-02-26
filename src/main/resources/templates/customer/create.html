@@ -9,39 +9,46 @@
 
 <div class="container">
     <hr>
-    <h4>Nhập thông tin để có thể sử dụng chức năng mua hàng</h4>
-    <th:block th:if="${message}">
-        <p th:text="${message}"></p>
-    </th:block>
-    <form th:action="@{/customer/create-customer}" th:object="${customer}" method="post">
-        <table class="table table-striped" style="height:85%;width: 35%;background: rgba(0,0,0,0.3);color: white">
-            <tr>
-                <td><label for="firstName">First Name:</label></td>
-                <td><input class="input-group" type="text" name="firstName" th:field="*{firstName}" id="firstName"/></td>
-                <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></td>
-            </tr>
-            <tr>
-                <td><label for="lastName">First Name:</label></td>
-                <td><input class="input-group" type="text" name="lastName" th:field="*{lastName}" id="lastName"/></td>
-                <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></td>
-            </tr>
-            <tr>
-                <td><label for="address">Address:</label></td>
-                <td><input class="input-group" type="text" name="address" th:field="*{address}" id="address"/></td>
-                <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></td>
-            </tr>
-            <tr>
-                <td><label for="phoneNumber">Phone Number:</label></td>
-                <td><input class="input-group" type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
-                <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
-            </tr>
+    <div class="row" >
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h4>Nhập thông tin để có thể sử dụng chức năng mua hàng</h4>
+            <th:block th:if="${message}">
+                <p th:text="${message}"></p>
+            </th:block>
+            <form th:action="@{/customer/create-customer}" th:object="${customer}" method="post">
+                <table class="table table-striped" style="width: 100%;background: rgba(0,0,0,0.5);color: white">
+                    <tr>
+                        <td><label for="firstName">First Name:</label></td>
+                        <td><input class="input-group" type="text" name="firstName" th:field="*{firstName}" id="firstName"/></td>
+                        <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="lastName">First Name:</label></td>
+                        <td><input class="input-group" type="text" name="lastName" th:field="*{lastName}" id="lastName"/></td>
+                        <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Address:</label></td>
+                        <td><input class="input-group" type="text" name="address" th:field="*{address}" id="address"/></td>
+                        <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="phoneNumber">Phone Number:</label></td>
+                        <td><input class="input-group" type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"/></td>
+                        <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
+                    </tr>
 
-            <tr>
-                <td></td>
-                <td><input class="btn btn-danger" type="submit" value="Create customer"></td>
-            </tr>
-        </table>
-    </form>
+                    <tr>
+                        <td></td>
+                        <td><input class="btn btn-danger" type="submit" value="Create customer"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
 </div>
 <footer th:replace="/layout :: footer"></footer>
 </body>

@@ -8,40 +8,58 @@
 <body>
 <header th:replace="/layout :: header"></header>
 <hr>
-<div class="container">
+<div class="container" >
     <th:block th:if="${message}">
         <p style="color: firebrick" th:text="${message}"></p>
     </th:block>
 <form class="form" th:action="@{/web/create-order}" th:object="${product}" method="post">
 
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <img class="img-fluid" th:src="${'http://localhost:8080/'+ product.img}">
                 <input type="hidden" name="imga" th:value="*{img}">
                 <td><input name="id" type="hidden" th:field="*{id}"/></td>
             </div>
-            <div class="col-md-5" style="height:85%;width: 35%;background: rgba(0,0,0,0.3);color: white">
+            <div class="col-md-6" style="width: 100%;background: rgba(0,0,0,0.5);color: white">
                 <div class="card-body">
 <!--                                    <span>Customer ID Test:</span>-->
                     <th:block th:if="${!session.isEmpty()}">
                         <input type="hidden" th:value="${session.customer.getId()}" name="customerId"></input>
                     </th:block>
+                    <table class="table table-hover">
+                        <tr>
+                            <td><h5>Name :</h5></td>
+                            <td>
+                                <h3 style="color: red" class="card-title" th:text="${product.name}"></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <h5>Mô tả :</h5></td>
+                            <td><p class="card-text" th:text="${product.desv}"></p></td>
+                        </tr>
+                        <tr>
+                            <td><h5>Size : </h5></td>
+                            <td><span th:text="${product.size.getName()}"></span></td>
+                        </tr>
+                        <tr>
+                            <td><h5>Giá : </h5></td>
+                            <td><span th:text="${product.price}"></span></td>
+                        </tr>
+                        <tr>
+                            <td><h5>Số lượng  </h5></td>
+                            <td><input class="form-control" type="number" name="quantity"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit"class="btn btn-danger" value=" Them vao gio hang "></td>
+                        </tr>
+                    </table>
 
-                    <h3 style="color: firebrick" class="card-title" th:text="${product.name}"></h3>
                     <input type="hidden" th:field="*{name}"/>
                     <input type="hidden" th:field="*{desv}"/>
                     <input type="hidden" th:field="*{price}"/>
                     <input type="hidden" th:field="*{size}"/>
                     <input type="hidden" th:field="*{category}"/>
-                    <hr>
-                    <h5>Mô tả :</h5><p class="card-text" th:text="${product.desv}"></p>
-                    Size : <span th:text="${product.size.getName()}"></span>
-                    <br>
-                    <h5>Giá : </h5><span th:text="${product.price}"></span>
-                    <hr>
-                    <h5>Số lượng : </h5> <input type="text" name="quantity">
-                    <hr>
-                    <input type="submit"class="btn btn-danger" value=" Them vao gio hang ">
                 </div>
             </div>
         </div>
